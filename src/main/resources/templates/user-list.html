@@ -1,34 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Users</title>
-</head>
+<meta charset="UTF-8">
+<title>Клиенты</title>
+<link rel="stylesheet" href="../static/styles/style.css" th:href="@{/styles/style.css}">
 <body>
+<div id = "toplayer">
+    <img src="images/logo.png" height="100"  alt="Логотип" >
+    <b class="toptext">Просмотр клиентов</b>
+</div>
+<br>
+<br>
+<br>
 <div th:switch="${users}">
     <h2 th:case="null">No users found!</h2>
+
     <div th:case="*">
-        <h2>Users</h2>
-        <table>
+        <table class="table">
             <thead>
-            <tr>
-                <th>Id</th>
-                <th>First name</th>
-                <th>Last name</th>
-            </tr>
+                <tr>
+                    <th>Id</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Отчество</th>
+                    <th>Номер Телефона</th>
+                    <th></th>
+                    <th></th>
+                </tr>
             </thead>
+
             <tbody>
-            <tr th:each="user : ${users}">
-                <td th:text="${user.id}"></td>
-                <td th:text="${user.firstName}"></td>
-                <td th:text="${user.lastName}"></td>
-                <td><a th:href="@{user-update/{id}(id=${user.id})}">Edit</a></td>
-                <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td>
-            </tr>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.surname}"></td>
+                    <td th:text="${user.patronymic}"></td>
+                    <td th:text="${user.number}"></td>
+                        <td><a th:href="@{user-update/{id}(id=${user.id})}">Изменить</a></td>
+                        <td><a th:href="@{user-delete/{id}(id=${user.id})}">Удалить</a></td>
+                </tr>
             </tbody>
         </table>
+
+        <b></b>
+        <b></b>
     </div>
-    <p><a href="/user-create">Create user</a></p>
+    <button onclick="location.href='/user-create'" class="button-right">Добавить Клиента</button>
 </div>
 </body>
 </html>

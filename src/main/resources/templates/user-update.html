@@ -1,20 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<meta charset="UTF-8">
-<title>Create user</title>
+    <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Обновить клиента</title>
+    <link rel="stylesheet" href="../static/styles/style.css" th:href="@{/styles/style.css}">
 </head>
+
 <body>
-<form action="#" th:action="@{/user-update}" th:object="${user}" method="post">
-    <label for="id">ID</label>
-    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
-    <br/>
-    <label for="firstName">First name</label>
-    <input type="text" th:field="*{firstName}" id="firstName" placeholder="First Name">
-    <br/>
-    <label for="lastName">Last name</label>
-    <input type="text" th:field="*{lastName}" id="lastName" placeholder="Last Name">
-    <br/>
-    <input type="submit" value="Update User">
-</form>
+<div id = "toplayer">
+    <img src="images/logo.png" height="100"  alt="Логотип" >
+    <b class="toptext">Обновить клиента</b>
+</div>
+
+<section>
+    <form action="#" th:action="@{/user-update}" th:object="${user}" method="post">
+        <b>ID:</b>
+        <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+        <br/>
+        <b>Имя:</b>
+        <input type="text" th:field="*{name}" id="name" placeholder="Name">
+        <br/>
+        <b>Фамилия:</b>
+        <input type="text" th:field="*{surname}" id="surname" placeholder="Surname">
+        <br/>
+        <b>Отчество:</b>
+        <input type="text" th:field="*{patronymic}" id="patronymic" placeholder="Patronymic">
+        <br/>
+        <b>Мобильный телефон:</b>
+        <input type="text" th:field="*{number}" id="number" placeholder="Mobile Number">
+        <br/>
+        <input class="input-speshal" type="submit" value="Изменить">
+    </form>
+</section>
+
 </body>
 </html>
